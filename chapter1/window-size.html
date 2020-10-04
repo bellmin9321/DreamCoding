@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Window Size</title>
+    <style>
+      .html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .tag {
+        background-color: thistle;
+        display: inline-block;
+        padding: 16px;
+        margin-top: 3px;
+        font-size: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tag">Window Size</div>
+    <script>
+      /*
+      window.screen : 모니터 사이즈
+      window.outer : 페이지를 넘어선 브라우져 전체의 사이즈
+      window.inner : 브라우저가 표시되는 페이지(+스크롤바)
+      documentElement.clientWidth : 문서자체
+      */
+      function updateTag() {
+        tag.innerHTML = `
+        window.screen: ${window.screen.width}, ${window.screen.height}</br>
+        window.outer: ${window.outerWidth}, ${window.outerHeight}</br>
+        window.inner: ${window.innerWidth}, ${window.innerHeight}</br>
+        documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+        `;
+      }
+
+      window.addEventListener("resize", () => {
+        updateTag();
+        // console.log(
+        //   `window.screen: ${window.screen.width}, ${window.screen.height}`
+        // );
+        // console.log(
+        //   `window.outer: ${window.outerWidth}, ${window.outerHeight}`
+        // );
+        // console.log(
+        //   `window.inner: ${window.innerWidth}, ${window.innerHeight}`
+        // );
+        // console.log(
+        //   `documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}`
+        // );
+      });
+      updateTag();
+    </script>
+  </body>
+</html>

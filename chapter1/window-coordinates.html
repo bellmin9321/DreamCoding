@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coordinates</title>
+    <style>
+      .html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        /* overflow: hidden;
+           window보다 벗어나면 보이지 않게함 */
+      }
+      /* .div라고 할 필요 없음*/
+      div {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 4px;v
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        background-color: blanchedalmond;
+      }
+      .target {
+        background-color: lightsalmon;
+        width: 250px;
+        height: 250px;
+        margin-top: 1px;
+      }
+      .target:hover {
+        cursor: pointer;
+        background-color: rgb(209, 18, 168);
+      }
+
+      aside {
+        position: fixed;
+        top: 20px;
+        right: 20px; /* javascript right과 다름 */
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="target">
+      <p>Target</p>
+      <p id="test"></p>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <aside>
+      <button class="scrollBy">Scroll by 100px(y)</button>
+      <button class="scrollTo">Scroll to 100px(y)</button>
+      <button class="scrollInto">Scroll into 100px</button>
+    </aside>
+    <script>
+      const target = document.querySelector(".target");
+      target.addEventListener("click", (event) => {
+        const rect = target.getBoundingClientRect();
+        console.log(rect);
+        console.log(`client: ${event.clientX}, ${event.clientY}`);
+        console.log(`page: ${event.pageX}, ${event.pageY}`);
+      });
+
+      const scrollBy = document.querySelector(".scrollBy");
+      scrollBy.addEventListener("click", (event) => {
+        window.scrollBy({ top: 100, left: 0, behavior: "smooth" });
+      });
+
+      const scrollTo = document.querySelector(".scrollTo");
+      scrollTo.addEventListener("click", (event) => {
+        window.scrollTo(0, 100);
+      });
+
+      const scrollInto = document.querySelector(".scrollInto");
+      scrollInto.addEventListener("click", (event) => {
+        target.scrollIntoView();
+      });
+    </script>
+  </body>
+</html>

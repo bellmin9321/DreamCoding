@@ -1,0 +1,16 @@
+APIs : Application Programming Interfaces
+내부작동원리를 몰라도 특정 도구의 사용법만 알아도 사용할 수 있는 것( ex : 자판기 버튼, 소켓 코드 )
+
+종류 : DOM, Network, Graphics, Audio/Video, Device, File, Storage
+
+MDN 사이트에서 WEB APIs 찾아보기
+
+HTTPs(Hypertext Transfer Protocol Secure)
+웹 클라이언트와 서버가 어떻게 통신하는지 통신규약을 정해놓은 것
+
+Window > Document > Navigator
+
+Window
+- DOM : document..
+- BOM : navigator, location, fetch, storage..
+- JavaScript : Array, Map, Date ..

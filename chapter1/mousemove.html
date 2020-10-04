@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MouseEvent</title>
+
+    <style>
+      html,
+      body {
+        background-color: black;
+        margin: 0;
+      }
+
+      .line {
+        position: absolute;
+        background-color: white;
+      }
+      .vertical {
+        left: 50%;
+        height: 100%;
+        width: 1px;
+      }
+
+      .horizontal {
+        width: 100%;
+        top: 50%;
+        height: 1px;
+      }
+
+      .target {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .tag {
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(20px, 20px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="line vertical"></div>
+    <div class="line horizontal"></div>
+    <img class="target" src="target.png" alt="target" />
+    <span class="tag">100px,100px</span>
+
+    <script>
+      const horizontal = document.querySelector(".horizontal");
+      const vertical = document.querySelector(".vertical");
+      const target = document.querySelector(".target");
+      const tag = document.querySelector(".tag");
+
+      document.addEventListener("mousemove", (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
+
+        vertical.style.left = `${x}px`;
+        horizontal.style.top = `${y}px`;
+        target.style.left = `${x}px`;
+        target.style.top = `${y}px`;
+        tag.style.left = `${x}px`;
+        tag.style.top = `${y}px`;
+        tag.innerHTML = `${x}px ${y}px`;
+      });
+
+      // if (document.addEventListener) {
+      //   document.addEventListener("mousemove", resultFun, false);
+      // } else if (document.attachEvent) {
+      //   document.attachEvent("onmousemove", resultFun);
+      // } else {
+      //   // attachEvent의 event는 "on"+event명
+      //   // addEventListener와 같은 기능( 호환만 다름 )
+      //   document.onmousemove = resultFun;
+      // }
+
+      // function resultFun(x) {
+      //   const cursor = x.clientX + "px" + " , " + x.clientY + "px";
+      //   const posX = x.clientX;
+      //   const posY = x.clientY;
+      //   //getElementById : internet Explore 5.5부터 지원가능
+      //   // class: querySelector('.'), id: querySelector('#')
+      //   // document.querySelector("#result").innerHTML = cursor;
+      //   // document.querySelector("#result").style.left = posX + "px";
+      //   // document.querySelector("#result").style.top = posY + "px";
+      // }
+
+      // const cursorVt = document.querySelector(".vt");
+      // const cursorHl = document.querySelector(".hl");
+
+      // document.addEventListener("mousemove", (e) => {
+      //   cursorVt.setAttribute("style", `left: ${e.clientX}px;`);
+      //   cursorHl.setAttribute("style", `top: ${e.clientY}px;`);
+      // });
+    </script>
+  </body>
+</html>
