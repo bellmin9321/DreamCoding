@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .inbox {
+        width: px;
+        height: 2000px;
+      }
+
+      .btn {
+        outline: none;
+        margin: 16px 0;
+        width: 100%;
+        background-color: tomato;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .carrot {
+        width: 100%;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inbox">
+        <div><button class="btn">Find a rabbit</button></div>
+        <!-- img*10 / alt + shift : 다중 선택-->
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+        <img class="rabbit" src="img/rabbit.png" alt="rabbit" />
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+        <img class="carrot" src="img/carrot.png" alt="carrot" />
+      </div>
+    </div>
+    <script>
+      const scrollInto = document.querySelector(".btn");
+      const target = document.querySelector(".rabbit");
+      scrollInto.addEventListener("click", (event) => {
+        target.scrollIntoView({ block: "center", behavior: "smooth" });
+      });
+      /* scrollIntoView
+      behavior : 전환애니메이션(ex; auto, smooth/ 기본값 auto)
+      block: 수직 정렬(ex; start, center, end, nearest/ 기본값 start)
+      inline: 수평 정렬(ex; start, center, end, nearest/ 기본값 nearest) */
+    </script>
+  </body>
+</html>
