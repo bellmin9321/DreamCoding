@@ -17,29 +17,23 @@
         background-color: white;
       }
       .vertical {
-        left: 50%;
         height: 100%;
         width: 1px;
       }
 
       .horizontal {
         width: 100%;
-        top: 50%;
         height: 1px;
       }
 
       .target {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        /* transform: translate(-50%, -50%); */
       }
 
       .tag {
         position: absolute;
         color: white;
-        top: 50%;
-        left: 50%;
         transform: translate(20px, 20px);
       }
     </style>
@@ -49,22 +43,30 @@
     <div class="line vertical"></div>
     <div class="line horizontal"></div>
     <img class="target" src="target.png" alt="target" />
-    <span class="tag">100px,100px</span>
+    <span class="tag"></span>
 
     <script>
       const horizontal = document.querySelector(".horizontal");
       const vertical = document.querySelector(".vertical");
       const target = document.querySelector(".target");
       const tag = document.querySelector(".tag");
+      const targetRect = target.getBoundingClientRect();
+      const targetHalfWidth = targetRect.width / 2;
+      const targetHalfHeight = targetRect.Height / 2;
 
       document.addEventListener("mousemove", (event) => {
         const x = event.clientX;
         const y = event.clientY;
 
-        vertical.style.left = `${x}px`;
-        horizontal.style.top = `${y}px`;
-        target.style.left = `${x}px`;
-        target.style.top = `${y}px`;
+        vertical.style.transform = `translateX(${x}px)`;
+        horizontal.style.transform = `translateY(${y}px)`;
+        target.style.transform = `translateX(${x - targetHalfWidth}px, ${
+          y - targetHalfHeight
+        }px)`;
+        // vertical.style.left = `${x}px`;
+        // horizontal.style.top = `${y}px`;
+        // target.style.left = `${x}px`;
+        // target.style.top = `${y}px`;
         tag.style.left = `${x}px`;
         tag.style.top = `${y}px`;
         tag.innerHTML = `${x}px ${y}px`;
