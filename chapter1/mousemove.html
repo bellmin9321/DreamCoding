@@ -28,7 +28,7 @@
 
       .target {
         position: absolute;
-        /* transform: translate(-50%, -50%); */
+        transform: translate(-50%, -50%);
       }
 
       .tag {
@@ -58,15 +58,15 @@
         const x = event.clientX;
         const y = event.clientY;
 
-        vertical.style.transform = `translateX(${x}px)`;
-        horizontal.style.transform = `translateY(${y}px)`;
-        target.style.transform = `translateX(${x - targetHalfWidth}px, ${
-          y - targetHalfHeight
-        }px)`;
-        // vertical.style.left = `${x}px`;
-        // horizontal.style.top = `${y}px`;
-        // target.style.left = `${x}px`;
-        // target.style.top = `${y}px`;
+        // vertical.style.transform = `translateX(${x}px)`;
+        // horizontal.style.transform = `translateY(${y}px)`;
+        // target.style.transform = `translateX(${x - targetHalfWidth}px, ${
+        //   y - targetHalfHeight
+        // }px)`;
+        vertical.style.left = `${x}px`;
+        horizontal.style.top = `${y}px`;
+        target.style.left = `${x}px`;
+        target.style.top = `${y}px`;
         tag.style.left = `${x}px`;
         tag.style.top = `${y}px`;
         tag.innerHTML = `${x}px ${y}px`;
