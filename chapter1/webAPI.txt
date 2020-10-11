@@ -14,3 +14,8 @@ Window
 - DOM : document..
 - BOM : navigator, location, fetch, storage..
 - JavaScript : Array, Map, Date ..
+
+--------------------------------------------------
+
+ctrl + shift + I  -> Performance -> ctrl + E -> recording -> 성능 확인
+ctrl + shift + I  -> ctrl + shift + p -> layout 검색 -> Hide layout shift regions
