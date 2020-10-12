@@ -25,7 +25,7 @@ function showToDos(text) {
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
   li.innerText = text;
-  delBtn.innerText = "X";
+  delBtn.innerText = "X"; // 안에 문자넣기
   li.id = toDos.length + 1;
   delBtn.addEventListener("click", handleDelete);
   li.appendChild(delBtn);
@@ -41,6 +41,9 @@ function showToDos(text) {
 
 function handleSubmit() {
   const currentValue = toDoInput.value;
+
+  if(!currentValue || currentValue  === "" || currentValue === " ") return false;
+// 공백인 경우 list 추가 방지
   showToDos(currentValue);
 }
 
@@ -55,6 +58,17 @@ function loadList() {
     });
   }
 } // input 박스에 할 일을 적고 엔터를 치면 submit 이벤트가 발생하는데 submit 이벤트를 다루기 위한 핸들러 추가
+
+const btnClick = document.querySelector('.addBtn');
+btnClick.onclick = function() {
+  const inputText = document.querySelector('.inputText');
+  const itemText = inputText.value;
+
+  if(!itemText || itemText  === "" || itemText === " ") return false;
+
+  showToDos(document.querySelector('.todolist'), itemText);
+  const parseItem = JSON.parse
+}
 
 function show() {
   loadList();

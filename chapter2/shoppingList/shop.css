@@ -50,7 +50,12 @@ ul {
   width: 100%;
 }
 
+li:hover {
+  cursor: pointer;
+}
+
 li {
+  margin: 10px;
   font-weight: bold;
   font-size: 20px;
 }
