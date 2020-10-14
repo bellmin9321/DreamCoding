@@ -82,6 +82,12 @@ input:focus {
   outline: none;
 }
 
+.checked {
+  text-decoration: line-through;
+  color: #c00;
+  font-weight: bold;
+}
+
 .bottom {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
