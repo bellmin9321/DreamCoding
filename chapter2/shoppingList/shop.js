@@ -70,6 +70,11 @@ btnClick.onclick = function() {
   const parseItem = JSON.parse
 }
 
+const checkBox = document.querySelector('.input')
+
+checkBox.type = 'checkBox';
+checkBox.onclick = updateItemStatus;
+
 function show() {
   loadList();
 }
