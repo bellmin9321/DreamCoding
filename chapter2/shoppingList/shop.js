@@ -11,11 +11,12 @@ function handleDelete() {
   const li = event.target.parentNode;
   toDoList.removeChild(li);
   const deleteToDos = toDos.filter(function (toDo) {
-    return toDo.id !== li.id;
-  });
+    return toDo.id !== parseInt(li.id);
+  }); // X btn 눌러서 삭제시 Local에서도 삭제하는 code
   toDos = deleteToDos;
   saveToDos();
 }
+
 
 function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
@@ -43,7 +44,7 @@ function handleSubmit() {
   const currentValue = toDoInput.value;
 
   if(!currentValue || currentValue  === "" || currentValue === " ") return false;
-// 공백인 경우 list 추가 방지
+// 공백인 경우 Enter로 list 추가 방지
   showToDos(currentValue);
 }
 
@@ -65,15 +66,34 @@ btnClick.onclick = function() {
   const itemText = inputText.value;
 
   if(!itemText || itemText  === "" || itemText === " ") return false;
-
+// btn click 시 공백 추가 방지
   showToDos(document.querySelector('.todolist'), itemText);
-  const parseItem = JSON.parse
+  const parseItem = JSON.parse(itemText);
+  parseItem.forEach(function (toDo) {
+    showToDos(toDo.text)
+  })
 }
 
-const checkBox = document.querySelector('.input')
+// const checkBox = document.querySelector('.input')
 
-checkBox.type = 'checkBox';
-checkBox.onclick = updateItemStatus;
+// checkBox.type = 'checkBox';
+// checkBox.onclick = updateItemStatus;
+
+// checkBox.id = 'cb_' + totalitems;
+
+// const span = document.createElement('span')
+// span.id = 'span' + totalitems;
+// span.innerText = itemText;
+
+// listItem.appendChild(checkBox);
+// listItem.appendChild(span);
+// listItem.appendChild(listItem);
+
+// const itemText = document.querySelector('item_' + chId);
+
+// if(this.checked) { itemText.className = 'checked'}
+// else { itemText.className = '';}
+
 
 function show() {
   loadList();
