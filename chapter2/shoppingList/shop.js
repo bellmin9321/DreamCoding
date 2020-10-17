@@ -1,6 +1,7 @@
 const toDoForm = document.querySelector(".send-text"),
   toDoInput = toDoForm.querySelector("input"),
-  toDoList = document.querySelector(".todolist");
+  toDoList = document.querySelector(".todolist"),
+  button = document.querySelector('.addBtn');
 
 const TODOS_LS = "toDos";
 // local Storage에 key 값으로 저장될 이름
@@ -17,7 +18,6 @@ function handleDelete() {
   saveToDos();
 }
 
-
 function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
@@ -25,32 +25,62 @@ function saveToDos() {
 function showToDos(text) {
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
-  li.innerText = text;
-  delBtn.innerText = "X"; // 안에 문자넣기
+  
+  li.innerText = text; // list에 text 넣기
+  delBtn.innerText = "X"; // btn 안에 문자넣기
+  
   li.id = toDos.length + 1;
   delBtn.addEventListener("click", handleDelete);
-  li.appendChild(delBtn);
-  toDoList.appendChild(li);
+  li.append(delBtn);
+  toDoList.append(li);
   toDoInput.value = "";
   const toDoObj = {
     text: text,
     id: toDos.length + 1,
   };
+
   toDos.push(toDoObj);
   saveToDos();
 }
 
-function handleSubmit() {
-  const currentValue = toDoInput.value;
+button.addEventListener('click', clickBtn);
 
-  if(!currentValue || currentValue  === "" || currentValue === " ") return false;
-// 공백인 경우 Enter로 list 추가 방지
-  showToDos(currentValue);
+function clickBtn(text) {
+  const li = document.createElement("li");
+  const delBtn = document.createElement("button");
+
+  li.innerText = text; // list에 text 넣기
+  delBtn.innerText = "X"; // btn 안에 문자넣기
+  
+  li.id = toDos.length + 1;
+  delBtn.addEventListener("click", handleDelete);
+  li.append(delBtn);
+  toDoList.append(li);
+  toDoInput.value = "";
+  const toDoObj = {
+    text: text,
+    id: toDos.length + 1,
+  };
+
+  toDos.push(toDoObj);
+  saveToDos();
+
 }
+// // < btn click 시 list 추가되는 code >
+// const btnClick = document.querySelector('.addBtn');
+//   btnClick.onclick = function () {
+//     const toDoInput = document.querySelector('input')
+//     const itemText = toDoInput.value;
+
+//     if(!itemText || itemText  === "" || itemText === " ") return false;
+// // btn click 시 공백 추가 방지
+//   showToDos(document.querySelector('.todolist'), itemText);
+//   }
 
 function loadList() {
   // local Storage에 저장된 toDoList를 가지고 오는 함수
   const loadToDos = localStorage.getItem(TODOS_LS);
+
   toDoForm.addEventListener("submit", handleSubmit);
   if (loadToDos !== null) {
     const parseToDo = JSON.parse(loadToDos);
@@ -60,40 +90,13 @@ function loadList() {
   }
 } // input 박스에 할 일을 적고 엔터를 치면 submit 이벤트가 발생하는데 submit 이벤트를 다루기 위한 핸들러 추가
 
-const btnClick = document.querySelector('.addBtn');
-btnClick.onclick = function() {
-  const inputText = document.querySelector('.inputText');
-  const itemText = inputText.value;
+function handleSubmit() {
+  const currentValue = toDoInput.value;
 
-  if(!itemText || itemText  === "" || itemText === " ") return false;
-// btn click 시 공백 추가 방지
-  showToDos(document.querySelector('.todolist'), itemText);
-  const parseItem = JSON.parse(itemText);
-  parseItem.forEach(function (toDo) {
-    showToDos(toDo.text)
-  })
+  if(!currentValue || currentValue  === "" || currentValue === " ") return false;
+// 공백인 경우 Enter로 list 추가 방지
+  showToDos(currentValue);
 }
-
-// const checkBox = document.querySelector('.input')
-
-// checkBox.type = 'checkBox';
-// checkBox.onclick = updateItemStatus;
-
-// checkBox.id = 'cb_' + totalitems;
-
-// const span = document.createElement('span')
-// span.id = 'span' + totalitems;
-// span.innerText = itemText;
-
-// listItem.appendChild(checkBox);
-// listItem.appendChild(span);
-// listItem.appendChild(listItem);
-
-// const itemText = document.querySelector('item_' + chId);
-
-// if(this.checked) { itemText.className = 'checked'}
-// else { itemText.className = '';}
-
 
 function show() {
   loadList();
