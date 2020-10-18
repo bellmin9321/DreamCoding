@@ -45,6 +45,7 @@ function showToDos(text) {
 
 button.addEventListener('click', clickBtn);
 
+// Click Button
 function clickBtn(text) {
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
@@ -53,7 +54,10 @@ function clickBtn(text) {
   delBtn.innerText = "X"; // btn 안에 문자넣기
   
   li.id = toDos.length + 1;
+
   delBtn.addEventListener("click", handleDelete);
+
+
   li.append(delBtn);
   toDoList.append(li);
   toDoInput.value = "";
