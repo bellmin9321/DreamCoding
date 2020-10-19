@@ -52,7 +52,8 @@ function clickBtn(text) {
 
   li.innerText = text; // list에 text 넣기
   delBtn.innerText = "X"; // btn 안에 문자넣기
-  
+  li.innerHTML = toDoInput.value; // JSON 안해도 해결!
+
   li.id = toDos.length + 1;
 
   delBtn.addEventListener("click", handleDelete);
@@ -85,7 +86,9 @@ function loadList() {
   // local Storage에 저장된 toDoList를 가지고 오는 함수
   const loadToDos = localStorage.getItem(TODOS_LS);
 
+
   toDoForm.addEventListener("submit", handleSubmit);
+  // button.addEventListener("click", clickBtn);
   if (loadToDos !== null) {
     const parseToDo = JSON.parse(loadToDos);
     parseToDo.forEach(function (toDo) {
