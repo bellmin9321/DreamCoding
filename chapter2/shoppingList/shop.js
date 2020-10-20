@@ -34,6 +34,7 @@ function showToDos(text) {
   li.append(delBtn);
   toDoList.append(li);
   toDoInput.value = "";
+  toDoInput.focus(); // 사용자가 추가버튼을 누른 후 다시 입력창에 cursor 둠
   const toDoObj = {
     text: text,
     id: toDos.length + 1,
@@ -52,7 +53,9 @@ function clickBtn(text) {
 
   li.innerText = text; // list에 text 넣기
   delBtn.innerText = "X"; // btn 안에 문자넣기
-  li.innerHTML = toDoInput.value; // JSON 안해도 해결!
+  li.innerHTML = toDoInput.value.trim(); // JSON 안해도 해결!
+  // trim : 문자열 양 끝의 공백 제거
+
 
   li.id = toDos.length + 1;
 
@@ -61,7 +64,8 @@ function clickBtn(text) {
 
   li.append(delBtn);
   toDoList.append(li);
-  toDoInput.value = "";
+  toDoInput.value = ""; // 사용자의 입력칸을 빈칸으로 리셋
+  toDoInput.focus(); // 사용자가 추가버튼을 누른 후 다시 입력창에 cursor 둠
   const toDoObj = {
     text: text,
     id: toDos.length + 1,
