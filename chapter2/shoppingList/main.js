@@ -20,7 +20,9 @@ function onAdd() {
   const item = createItem();
 //   //3. items 컨테이너안에 새로 만든 아이템을 추가한다
   items.appendChild(item);
-//   //4. 인풋을 초기화 한다
+     //4. 새로 추가된 아이템으로 스크롤링
+  items.scrollIntoView({blcok: 'center'})
+//   //5. 인풋을 초기화 한다
   input.value = '';
   input.focus();
 }
@@ -58,6 +60,8 @@ addBtn.addEventListener('click', () => {
   onAdd();
 });
 
-// input.addEventListener('keypress', (event) => {
-//   console.log('key');
-// })
+input.addEventListener('keypress', (event) => {
+  if(event.key === "Enter") {
+    onAdd();
+  }
+}) //Enter 눌렀을 때 list 추가
