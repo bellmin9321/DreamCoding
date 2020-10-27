@@ -25,7 +25,7 @@ append는 함수를 더 선호(문자열 삽입 가능)ddd
 */
   items.appendChild(item);
      //4. 새로 추가된 아이템으로 스크롤링
-  items.scrollIntoView({blcok: 'center'})
+  items.scrollIntoView({block: 'center'})
 //   //5. 인풋을 초기화 한다
   input.value = '';
   input.focus();
@@ -36,7 +36,7 @@ function createItem(text) {
   itemRow.setAttribute('class', 'item__row');
 
   const item = document.createElement('div');
-  item.setAttrivute('class', 'item')
+  item.setAttribute('class', 'item')
 
   const name = document.createElement('span');
   span.setAttribute('class', 'item__name');
