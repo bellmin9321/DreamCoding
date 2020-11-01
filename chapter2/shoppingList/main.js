@@ -39,6 +39,7 @@ let id = 0; // UUID
 function createItem(text) {
   const itemRow = document.createElement('li')
   itemRow.setAttribute('class', 'item__row');
+  itemRow.setAttribute('data-id', id);
   itemRow.innerHTML = `
   <div class="item" data-id=${id}>
   <span class="item__name">${text}</span>
@@ -83,9 +84,10 @@ input.addEventListener('keypress', (event) => {
 }) //Enter 눌렀을 때 list 추가
 
 items.addEventListener('click', event => {
-  if(event.target.dataset.id) {
-    const toBeDeleted = document.querySelector();
-    toBeDeleted.remove();
+  const id = event.target.dataset.id;
+  if(id) {
+    const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"]`);
+  toBeDeleted.remove();
   }
   
 })
