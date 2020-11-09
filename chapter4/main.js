@@ -36,3 +36,7 @@ const x = setInterval(function() {
     document.querySelector('.timer').innerHTML = "TIME OVER";
   }
 }, 1000);
+
+// setInterval vs setTimeout
+// 특정 시간 이후 단 한 번만 특정 함수 또는 코드를 실행
+// 2번째 인자의 시간이 경과하면 1번째 인자의 함수를 실행
