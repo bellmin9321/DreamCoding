@@ -34,27 +34,47 @@ const bug = document.querySelector('.bug');
 //     document.querySelector('.timer').innerHTML = "TIME OVER";
 //   }
 // }, 1000);
+document.addEventListener("DOMContentLoaded", function() {
+  timer();
 
-const count = 60;
-const time = 0;
-const min = ""
-const sec = ""
-min = parseInt(time/60);
-sec = time%60;
-document.querySelector('.timer').innerHTML = "TIME OVER";
-function start() {
-  clearInterval(time);
-  time = setInterval("func()", 1000);
+  setInterval(timer, 1000);
+})
+
+function timer(duration) {
+  const count = duration * 60;
+  const min, sec;
+
+  min = parseInt(timer / 60 % 60, 10);
+  sec = parseItn(timer % 60, 10);
+  min = min < 10 ? "0" + min : min;
+  sec = sec < 10 ? "0" + sec : sec;
+  document.querySelector('.timer').innerHTML = min + ":" + sec;
+
+  if(count < 0 ) {
+    clearInterval()
+ } else ( count = 0) {
+  alert("GAME OVER")
+ }
 }
 
-function func() {
-  count = count + 1;
-  if(count != 0) {
-
-  } else if (count = 0) {
-    clearInterval(time);
-  }
+// 1자리 숫자인 경우 앞에 0을 붙여줌
+function addzero(num) {
+  if(num<10) { num = "0" + num;}
+  return num;
 }
+
+// const count = 60;
+// const time = 60;
+// const min = ""
+// const sec = ""
+// min = parseInt(time/60);
+// sec = time%60;
+// document.querySelector('.timer').innerHTML = 
+// function start() {
+//   clearInterval(time);
+//   time = setInterval("func()", 1000);
+// }
+
 
 // setInterval vs setTimeout
 // 특정 시간 이후 단 한 번만 특정 함수 또는 코드를 실행
