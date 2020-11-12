@@ -8,18 +8,29 @@ const bug = document.querySelector('.bug');
 쉬운것부터 작업
 1. start 버튼 누르면 || 로 바뀌기 > 타이머 시작
 2. 
-
 */
 
-// function deleteItem() {
-//   const
-// }
+// timer 라 하면 const timer 랑 겹치므로 안된다!!!!
+// 위에 함수선언한거랑 다른이름으로
+function play() {
+  start.innerHTML = '<div class><i class="fas fa-stop"></i></i></div>'
+  setInterval(timer, 1000);
+  timer();
+}
 
-// start.addEventListener('click', (event) => {
-//   if(event.target.) {
+function timer() {
+  const time = 10;
+  const min = 0;
+  const sec;
+  if( sec < 10 ){
+    sec = "0" + sec;
+  }
+  document.querySelector('.timer').innerText = min + ":" + sec;
+}
 
-//   } 
-// })
+// '<div><i class="fas fa-play" class="start-font"></i></div>'
+//   '<div><i class="fas fa-pause"></i></div>'
+
 
 // const x = setInterval(function() {
 //   const time = 60;
@@ -34,19 +45,6 @@ const bug = document.querySelector('.bug');
 //     document.querySelector('.timer').innerHTML = "TIME OVER";
 //   }
 // }, 1000);
-
-// timer 라 하면 const timer 랑 겹치므로 안된다!!!! 위에 함수선언한거랑 다른이름으로
-function play() {
-  
-  if(onclick = true) {
-    start.innerHTML = '<div><i class="fas fa-pause"></i></div>'
-  } else {
-    onclick = false
-  }
-  
-}
-
-
 
 
 // start.addEventListener("click", function() {
@@ -88,8 +86,6 @@ function play() {
   //   return count;
   // }
   
-
-
 // const count = 60;
 // const time = 60;
 // const min = ""
@@ -101,7 +97,6 @@ function play() {
 //   clearInterval(time);
 //   time = setInterval("func()", 1000);
 // }
-
 
 // setInterval vs setTimeout
 // 특정 시간 이후 단 한 번만 특정 함수 또는 코드를 실행
