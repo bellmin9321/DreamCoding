@@ -34,34 +34,61 @@ const bug = document.querySelector('.bug');
 //     document.querySelector('.timer').innerHTML = "TIME OVER";
 //   }
 // }, 1000);
-document.addEventListener("DOMContentLoaded", function() {
-  timer();
 
-  setInterval(timer, 1000);
-})
-
-function timer(duration) {
-  const count = duration * 60;
-  const min, sec;
-
-  min = parseInt(timer / 60 % 60, 10);
-  sec = parseItn(timer % 60, 10);
-  min = min < 10 ? "0" + min : min;
-  sec = sec < 10 ? "0" + sec : sec;
-  document.querySelector('.timer').innerHTML = min + ":" + sec;
-
-  if(count < 0 ) {
-    clearInterval()
- } else ( count = 0) {
-  alert("GAME OVER")
- }
+// timer 라 하면 const timer 랑 겹치므로 안된다!!!! 위에 함수선언한거랑 다른이름으로
+function play() {
+  
+  if(onclick = true) {
+    start.innerHTML = '<div><i class="fas fa-pause"></i></div>'
+  } else {
+    onclick = false
+  }
+  
 }
 
-// 1자리 숫자인 경우 앞에 0을 붙여줌
-function addzero(num) {
-  if(num<10) { num = "0" + num;}
-  return num;
-}
+
+
+
+// start.addEventListener("click", function() {
+//   start.innerHTML = '<i class="fas fa-pause"></i>'
+//   setInterval(timer, 1000);
+//   timer();
+
+//   function decrementTime() {
+//     const x1 = document.querySelector('time1');
+//     const x2 = document.querySelector('time2');
+//     x1.innerHTML = toMinSec(time);
+//     x2.innerHTML = toMinSec(time);
+//   }
+
+//   function timer(t) {
+//     const count = 60;
+//     const min;
+//     const sec;
+
+//     min = Math.floor(count / 60);
+//     sec = count - (min * 60);
+
+//     if(min < 10) min = "0" + min;
+//     if(sec < 10) sec = "0" + sec;
+
+//     document.querySelector('.timer').innerHTML = min + ":" + sec;
+  
+//     if(count > 0 ) time--
+//     else {
+//       clearInterval(timer);
+//       document.form.submit();
+//     } 
+//     return(min+":"+sec);
+//   }
+  
+  // // 1자리 숫자인 경우 앞에 0을 붙여줌
+  // function addzero(count) {
+  //   if(count < 10) { count = "0" + count;}
+  //   return count;
+  // }
+  
+
 
 // const count = 60;
 // const time = 60;
