@@ -14,37 +14,43 @@ const bug = document.querySelector('.bug');
 // 위에 함수선언한거랑 다른이름으로
 function play() {
   start.innerHTML = '<div class><i class="fas fa-stop"></i></i></div>'
-  setInterval(timer, 1000);
-  timer();
+  startTimer();
 }
 
-function timer() {
-  const time = 10;
-  const min = 0;
-  const sec;
-  if( sec < 10 ){
-    sec = "0" + sec;
+function startTimer(seconds, cb) {
+  const remainingTime = seconds;
+  window.setTimeout(function() {
+    cb();
+    console.log(remainingTime);
+    if ( remainingTime > 0) {
+      startTimer(remainingTime - 1, cb);
+    }
+  }, 1000);
+
+  const callback = function() {
+    console.log('callback');
   }
-  document.querySelector('.timer').innerText = min + ":" + sec;
 }
 
-// '<div><i class="fas fa-play" class="start-font"></i></div>'
-//   '<div><i class="fas fa-pause"></i></div>'
+startTimer(90, callback);
 
+// function startTimer() {
+//   const time = 600;
+//   const min = "";
+//   const sec = "";
 
-// const x = setInterval(function() {
-//   const time = 60;
-//   const min = ""
-//   const sec = ""
-//   min = parseInt(time/60);
-//   sec = time%60;
-//   document.querySelector('.timer').innerHTML = min + ":" + sec + time--;
+// // setInterval(function() {...}, 지연시간)
+//   const x = setInterval(function() {
+//     min = parseInt(time/60)
+//     sec = time%60;
+//     timer.innerText = min + ":" sec;
+//     time--;
 
-//   if ( time < 0 ) {
-//     clearInterval(x);
-//     document.querySelector('.timer').innerHTML = "TIME OVER";
-//   }
-// }, 1000);
+//     if ( time < 0) {
+//       clearInterval(x);
+//       console.log('gg')
+//     }
+//   }, 1000);
 
 
 // start.addEventListener("click", function() {
@@ -80,24 +86,6 @@ function timer() {
 //     return(min+":"+sec);
 //   }
   
-  // // 1자리 숫자인 경우 앞에 0을 붙여줌
-  // function addzero(count) {
-  //   if(count < 10) { count = "0" + count;}
-  //   return count;
-  // }
-  
-// const count = 60;
-// const time = 60;
-// const min = ""
-// const sec = ""
-// min = parseInt(time/60);
-// sec = time%60;
-// document.querySelector('.timer').innerHTML = 
-// function start() {
-//   clearInterval(time);
-//   time = setInterval("func()", 1000);
-// }
-
 // setInterval vs setTimeout
 // 특정 시간 이후 단 한 번만 특정 함수 또는 코드를 실행
 // 2번째 인자의 시간이 경과하면 1번째 인자의 함수를 실행
