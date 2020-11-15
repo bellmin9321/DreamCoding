@@ -17,22 +17,39 @@ function play() {
   startTimer();
 }
 
-function startTimer(seconds, cb) {
-  const remainingTime = seconds;
-  window.setTimeout(function() {
-    cb();
-    console.log(remainingTime);
-    if ( remainingTime > 0) {
-      startTimer(remainingTime - 1, cb);
+function startTimer() {
+
+// var, const, let 사용 비교 https://poiemaweb.com/es6-block-scope
+  const x = setInterval(function() {
+    let time = 600;
+    let min = "";
+    let sec = "";
+    min = time/60;
+    sec = time%60;
+
+    timer.innerHTML = min + ":" + sec + time--;
+
+    if ( time < 0) {
+      clearInterval(x);
+      alert('x');
     }
   }, 1000);
-
-  const callback = function() {
-    console.log('callback');
-  }
 }
 
-startTimer(90, callback);
+// function startTimer(seconds, cb) {
+//   const remainingTime = seconds;
+//   window.setTimeout(function() {
+//     cb();
+//     console.log(remainingTime);
+//     sec
+//     }
+//   }, 1000);
+
+//   const callback = function() {
+//     console.log('callback');
+// }
+
+// startTimer(90, callback);
 
 // function startTimer() {
 //   const time = 600;
@@ -40,7 +57,7 @@ startTimer(90, callback);
 //   const sec = "";
 
 // // setInterval(function() {...}, 지연시간)
-//   const x = setInterval(function() {
+//   const x = setInterval(function()
 //     min = parseInt(time/60)
 //     sec = time%60;
 //     timer.innerText = min + ":" sec;
