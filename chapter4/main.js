@@ -19,23 +19,25 @@ function play() {
 
 function startTimer() {
 
-// var, const, let 사용 비교 https://poiemaweb.com/es6-block-scope
+// 정리 잘된 var, const, let 사용 비교 https://poiemaweb.com/es6-block-scope
+
   const x = setInterval(function() {
-    let time = 600;
-    let min = "";
-    let sec = "";
-    min = time/60;
-    sec = time%60;
+    let time = 10;
 
-    timer.innerHTML = min + ":" + sec + time--;
+    timer.innerHTML = "0:" + time ;
+    time--;
 
-    if ( time < 0) {
+    if(time < 10) {time = "0" + time
+  } else ( time--)
+    console.log("timing")
+
+    if ( time <= 0) {
       clearInterval(x);
+      time.innerHTML = "";
       alert('x');
     }
   }, 1000);
 }
-
 // function startTimer(seconds, cb) {
 //   const remainingTime = seconds;
 //   window.setTimeout(function() {
@@ -51,37 +53,6 @@ function startTimer() {
 
 // startTimer(90, callback);
 
-// function startTimer() {
-//   const time = 600;
-//   const min = "";
-//   const sec = "";
-
-// // setInterval(function() {...}, 지연시간)
-//   const x = setInterval(function()
-//     min = parseInt(time/60)
-//     sec = time%60;
-//     timer.innerText = min + ":" sec;
-//     time--;
-
-//     if ( time < 0) {
-//       clearInterval(x);
-//       console.log('gg')
-//     }
-//   }, 1000);
-
-
-// start.addEventListener("click", function() {
-//   start.innerHTML = '<i class="fas fa-pause"></i>'
-//   setInterval(timer, 1000);
-//   timer();
-
-//   function decrementTime() {
-//     const x1 = document.querySelector('time1');
-//     const x2 = document.querySelector('time2');
-//     x1.innerHTML = toMinSec(time);
-//     x2.innerHTML = toMinSec(time);
-//   }
-
 //   function timer(t) {
 //     const count = 60;
 //     const min;
@@ -90,8 +61,6 @@ function startTimer() {
 //     min = Math.floor(count / 60);
 //     sec = count - (min * 60);
 
-//     if(min < 10) min = "0" + min;
-//     if(sec < 10) sec = "0" + sec;
 
 //     document.querySelector('.timer').innerHTML = min + ":" + sec;
   
