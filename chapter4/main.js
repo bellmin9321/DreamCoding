@@ -16,43 +16,50 @@ function play() {
   start.innerHTML = '<div class><i class="fas fa-stop"></i></i></div>'
   startTimer();
 }
-
-function startTimer() {
-
 // 정리 잘된 var, const, let 사용 비교 https://poiemaweb.com/es6-block-scope
 
-  const x = setInterval(function() {
+function startTimer() {
+  setInterval(function (){
     let time = 10;
-
-    timer.innerHTML = "0:" + time ;
-    time--;
-
-    if(time < 10) {time = "0" + time
-  } else ( time--)
-    console.log("timing")
-
-    if ( time <= 0) {
-      clearInterval(x);
-      time.innerHTML = "";
-      alert('x');
+    if ( time > 0 ) {
+      time = time - 1
     }
+    timer.innerHTML = "0:" + time;
+    console.log(time)
+  
+    if (time = 0) {
+      clearInterval();
+      time.innerHTML = "";
+      alert("TIME OVER")
+    }
+    return time;
   }, 1000);
+  time = time - 1;
 }
-// function startTimer(seconds, cb) {
-//   const remainingTime = seconds;
-//   window.setTimeout(function() {
-//     cb();
-//     console.log(remainingTime);
-//     sec
+
+function stopTimer() {
+  start.onclick = function () {
+    clearInterval(startTimer())
+  }
+}
+
+// function startTimer() {
+//   const x = setInterval(function() {
+//     let time = 10;
+
+//     timer.innerHTML = "0:" + time ;
+//     time--;
+
+//     if(time < 10) {time = "0" + time}
+//     console.log("timing")
+
+//     if ( time <= 0) {
+//       clearInterval(x);
+//       time.innerHTML = "";
+//       alert('x');
 //     }
 //   }, 1000);
-
-//   const callback = function() {
-//     console.log('callback');
 // }
-
-// startTimer(90, callback);
-
 //   function timer(t) {
 //     const count = 60;
 //     const min;
@@ -75,3 +82,10 @@ function startTimer() {
 // setInterval vs setTimeout
 // 특정 시간 이후 단 한 번만 특정 함수 또는 코드를 실행
 // 2번째 인자의 시간이 경과하면 1번째 인자의 함수를 실행
+
+/*
+return
+1. 값을 반환하는데 사용
+2. 지역변수를 알 수 있는데 사용
+3. 현재 진행중인 함수를 중지
+*/
