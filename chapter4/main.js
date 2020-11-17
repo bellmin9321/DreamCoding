@@ -19,27 +19,29 @@ function play() {
 // 정리 잘된 var, const, let 사용 비교 https://poiemaweb.com/es6-block-scope
 
 function startTimer() {
-  setInterval(function (){
-    let time = 10;
-    if ( time > 0 ) {
+  let time = 10;
+  timer.innerHTML = "0:" + time;
+  setInterval(decTime, 1000);
+  return time;
+  function decTime() {
+    if(time > 0) {
       time = time - 1
+      timer.innerHTML = "0:" + time;
+      if(time <10 ) time = "0" + time
+      console.log(time)
+    } else{
+      setTimeout(a, 1000);
+      function a(){
+        alert('야호')
+      }
     }
-    timer.innerHTML = "0:" + time;
-    console.log(time)
-  
-    if (time = 0) {
-      clearInterval();
-      time.innerHTML = "";
-      alert("TIME OVER")
-    }
-    return time;
-  }, 1000);
-  time = time - 1;
+  }
 }
 
 function stopTimer() {
   start.onclick = function () {
     clearInterval(startTimer())
+    alert('game restart')
   }
 }
 
