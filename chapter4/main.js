@@ -25,17 +25,20 @@ function startTimer() {
   setInterval(decTime, 1000);
   return time;
   function decTime() {
-    if(time > 0) {
+    if(time != 0) {
       time = time - 1
       timer.innerHTML = "0:" + time;
       
       console.log(time)
-    } else{
+    } else {
       setTimeout(replay, 1000);
       function replay() {
         const popup = document.createElement('div');
         popup.setAttribute('class', 'pop-up')
-        popup.innerHTML = '<i class="fas fa-redo"></i>'
+        popup.innerHTML = `
+        <div class="replay"><i class="fas fa-redo"></i></div>
+        <span>Replay</span>
+        `
         console.log('popup')
       }
     }
