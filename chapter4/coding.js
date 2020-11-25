@@ -44,3 +44,16 @@ function startTimer() {
     }
   }
 }
+
+function stopTimer() {
+  start.onclick = function () {
+    clearInterval(startTimer())
+    const popup = document.createElement('div');
+        popup.setAttribute('class', 'pop-up')
+        popup.innerHTML = `
+        <div class="replay"><i class="fas fa-redo"></i></div>
+        <span>Replay</span>
+        `
+        console.log('popup')
+  }
+}
