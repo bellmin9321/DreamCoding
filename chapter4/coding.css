@@ -61,3 +61,66 @@ button {
   background-color: blue;
   opacity: 0.4;
 }
+
+/* -------------------------------------------------- */
+
+.timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: solid 5px black;
+  border-radius: 10px;
+  background-color: white;
+  width: 150px;
+  height: 50px;
+  margin-top: 10px;
+  color: black;
+  font-size: 50px;
+}
+
+.pop-up {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  color: white;
+  border: solid 2px black;
+  border-radius: 3px;
+  width: 400px;
+  height: 100px;
+}
+
+.rest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 40px;
+  border: solid 3px black;
+  border-radius: 25px;
+  background-color: tomato;
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
+.playground {
+}
+
+img {
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+}
+img:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.carrot {
+}
+
+.bug {
+}
