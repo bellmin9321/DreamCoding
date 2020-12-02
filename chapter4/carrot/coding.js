@@ -34,12 +34,12 @@ function randomNumber(min, max) {
 
 initGame();
 
-function addItem (className, count, imgPath ) {
+function addItem(className, count, imgPath) {
   const x1 = 0;
   const y1 = 0;
-  const x2 = fieldRect.width
-  const y2 = fieldRect.height
-  for (let i = 0; i < count; i++) {
+  const x2 = fieldRect.width - CARROT_SIZE;
+  const y2 = fieldRect.height - CARROT_SIZE;
+  for (let i = 0; i < count ; i++) {
     const item = document.createItem('img');
     item.setAttribute('class', className);
     item.setAttribute('src', imgPath);
@@ -55,3 +55,5 @@ function addItem (className, count, imgPath ) {
 function randomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
+
+initGame();
