@@ -1,4 +1,9 @@
+'use strict';
+
 const CARROT_SIZE = 80;
+const button = document.querySelector('.game__button');
+const timer = document.querySelector('.game__timer');
+const rest = document.querySelector('.game__score')
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
 
@@ -7,8 +12,36 @@ function initGame() {
   console.log(fieldRect);
   addItem('carrot', 5, './img/carrot.png');
   addItem('bug', 5, './img/bug.png');
+  button.innerHTML = '<div class><i class="fas fa-stop"></i></i></div>'
+  startTimer();
 }
 
+function startTimer() {
+  let time = 1;
+  timer.innerHTML = "0:" + time;
+  rest.innerHTML = 10;
+  setInterval(decTime, 1000);
+  return time;
+  function decTime() {
+    if(time != 0) {
+      time = time - 1
+      timer.innerHTML = "0:" + time;
+      
+      console.log(time)
+    } else {
+      setTimeout(replay, 1000);
+      function replay() {
+        const popup = document.createElement('div');
+        popup.setAttribute('class', 'pop-up')
+        popup.innerHTML = `
+        <div class="replay"><i class="fas fa-redo"></i></div>
+        <span>Replay</span>
+        `
+        console.log('popup')
+      }
+    }
+  }
+}
 
 function addItem(className, count, imgPath) {
   const x1 = 0;
@@ -24,30 +57,6 @@ function addItem(className, count, imgPath) {
     const y = randomNumber(y1, y2);
     item.style.left = `${x}px`;
     item.style.top = `${y}px`;
-    field.appendChild(item);
-  }
-}
-
-function randomNumber(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-initGame();
-
-function addItem(className, count, imgPath) {
-  const x1 = 0;
-  const y1 = 0;
-  const x2 = fieldRect.width - CARROT_SIZE;
-  const y2 = fieldRect.height - CARROT_SIZE;
-  for (let i = 0; i < count ; i++) {
-    const item = document.createItem('img');
-    item.setAttribute('class', className);
-    item.setAttribute('src', imgPath);
-    item.style.position = 'absolute';
-    const x = randomNumber(x1, x2);
-    const y = randomNumber(y1, y2);
-    item.style.left = `${x}px`
-    item.style.top = `${y}px`
     field.appendChild(item);
   }
 }
