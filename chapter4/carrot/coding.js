@@ -1,46 +1,55 @@
 'use strict';
 
 const CARROT_SIZE = 80;
-const button = document.querySelector('.game__button');
-const timer = document.querySelector('.game__timer');
-const rest = document.querySelector('.game__score')
+const CARROT_COUNT = 5;
+const BUG_COUNT = 5;
+const gameBtn = document.querySelector('.game__button');
+const gameTimer = document.querySelector('.game__timer');
+const gameScore = document.querySelector('.game__score');
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
 
-function initGame() {
-  // 벌레와 당근을 생성한뒤 field에 추가해줌
-  console.log(fieldRect);
-  addItem('carrot', 5, './img/carrot.png');
-  addItem('bug', 5, './img/bug.png');
-  button.innerHTML = '<div class><i class="fas fa-stop"></i></i></div>'
-  startTimer();
+let started = false;
+let score = 0;
+let timer = undefined;
+
+gameBtn.addEventListener('click', () => {
+  if(started) {
+    stopGame();
+  } else {
+    startGame();
+  }
+  started = !started;
+})
+
+function startGame() {
+  initGame();
+  showStopButton();
+  showTimerAndScore();
+  startGameTimer();
 }
 
-function startTimer() {
-  let time = 1;
-  timer.innerHTML = "0:" + time;
-  rest.innerHTML = 10;
-  setInterval(decTime, 1000);
-  return time;
-  function decTime() {
-    if(time != 0) {
-      time = time - 1
-      timer.innerHTML = "0:" + time;
-      
-      console.log(time)
-    } else {
-      setTimeout(replay, 1000);
-      function replay() {
-        const popup = document.createElement('div');
-        popup.setAttribute('class', 'pop-up')
-        popup.innerHTML = `
-        <div class="replay"><i class="fas fa-redo"></i></div>
-        <span>Replay</span>
-        `
-        console.log('popup')
-      }
-    }
-  }
+function stopGame() {
+
+}
+
+function showStopButton() {
+  const icon = gameBtn.querySelector('.fa-play');
+  icon.classList.add('fa-stop');
+  icon.classList.remove('fa-play');
+}
+
+function showTimerAndScore() {
+  gameTimer.style.visibility = 'visible';
+  gameScore.style.visibility = 'visible';
+}
+
+function initGame() {
+  field.innerHTML = '';
+  gameScore.innerText = CARROT_COUNT;
+  // 벌레와 당근을 생성한뒤 field에 추가해줌
+  addItem('carrot', 5, './img/carrot.png');
+  addItem('bug', 5, './img/bug.png');
 }
 
 function addItem(className, count, imgPath) {
