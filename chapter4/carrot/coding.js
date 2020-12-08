@@ -32,13 +32,17 @@ function startGame() {
 }
 
 function stopGame() {
-
+  stopGameTimer();
 }
 
 function showStopButton() {
   const icon = gameBtn.querySelector('.fa-play');
   icon.classList.add('fa-stop');
   icon.classList.remove('fa-play');
+}
+
+function hidGameButton() {
+  gameBtn.style.visibility = 'hidden';
 }
 
 function showTimerAndScore() {
@@ -56,6 +60,12 @@ function startGameTimer() {
     }
     updateTimerText(--remainingTimeSec);
   }, 1000);
+}
+
+function stopGameTimer() {
+  clearInterval(timer);
+  hideGameButton();
+  showPopUpWithText('REPLAY');
 }
 
 function updateTimerText(time) {
