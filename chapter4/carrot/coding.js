@@ -31,8 +31,40 @@ function startGame() {
   startGameTimer();
 }
 
+function initGame() {
+  field.innerHTML = ''; // 이미지 중복생성 방지
+  gameScore.innerText = CARROT_COUNT;
+  // 벌레와 당근을 생성한뒤 field에 추가해줌
+  addItem('carrot', 5, './img/carrot.png');
+  addItem('bug', 5, './img/bug.png');
+}
+// 제일 어려운 부분
+function addItem(className, count, imgPath) {
+  const x1 = 0;
+  const y1 = 0;
+  const x2 = fieldRect.width - CARROT_SIZE;
+  const y2 = fieldRect.height - CARROT_SIZE;
+  for (let i = 0; i < count; i++) {
+    const item = document.createElement('img');
+    item.setAttribute('class', className);
+    item.setAttribute('src', imgPath);
+    item.style.position = 'absolute';
+    const x = randomNumber(x1, x2);
+    const y = randomNumber(y1, y2);
+    item.style.left = `${x}px`;
+    item.style.top = `${y}px`;
+    field.appendChild(item);
+  }
+}
+
 function stopGame() {
   stopGameTimer();
+}
+
+function stopGameTimer() {
+  clearInterval(timer);
+  hideGameButton();
+  showPopUpWithText('REPLAY');
 }
 
 function showStopButton() {
@@ -41,7 +73,7 @@ function showStopButton() {
   icon.classList.remove('fa-play');
 }
 
-function hidGameButton() {
+function hideGameButton() {
   gameBtn.style.visibility = 'hidden';
 }
 
@@ -62,42 +94,10 @@ function startGameTimer() {
   }, 1000);
 }
 
-function stopGameTimer() {
-  clearInterval(timer);
-  hideGameButton();
-  showPopUpWithText('REPLAY');
-}
-
 function updateTimerText(time) {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
   gameTimer.innerText = `${minutes}:${seconds}`
-}
-
-function initGame() {
-  field.innerHTML = '';
-  gameScore.innerText = CARROT_COUNT;
-  // 벌레와 당근을 생성한뒤 field에 추가해줌
-  addItem('carrot', 5, './img/carrot.png');
-  addItem('bug', 5, './img/bug.png');
-}
-
-function addItem(className, count, imgPath) {
-  const x1 = 0;
-  const y1 = 0;
-  const x2 = fieldRect.width - CARROT_SIZE;
-  const y2 = fieldRect.height - CARROT_SIZE;
-  for (let i = 0; i < count; i++) {
-    const item = document.createElement('img');
-    item.setAttribute('class', className);
-    item.setAttribute('src', imgPath);
-    item.style.position = 'absolute';
-    const x = randomNumber(x1, x2);
-    const y = randomNumber(y1, y2);
-    item.style.left = `${x}px`;
-    item.style.top = `${y}px`;
-    field.appendChild(item);
-  }
 }
 
 function randomNumber(min, max) {
