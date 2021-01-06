@@ -26,7 +26,7 @@ export default class Field {
   }
 
   // 제일 어려운 부분(반복 숙달할 것)
-  addItem(className, count, imgPath) {
+  _addItem(className, count, imgPath) {
     const x1 = 0;
     const y1 = 0;
     const x2 = this.fieldRect.width - CARROT_SIZE;
