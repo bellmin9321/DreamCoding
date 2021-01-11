@@ -5,3 +5,19 @@
 Process > Code > Stack > Heap > Data
 
 - Thread : Process 안에서 여러개 동작가능하고 또 각각의 업무를 배정 받음. 이 Thread는 자기들만의 수행해야 하는 함수의 호출을 기억해야 해서 stack이 할당되어짐
+-----------------------------------------------------------------
+JavaScript 는 single Thread
+So, Web APIs 를 이요하면 Multi Thread가 가능
+
+JavaScript Engine 안에 Memory Heap, Call Stack이 있음
+- Memory Heap : 변수를 선언해서 오브젝트를 할당하거나 문자열이나 숫자를 할당하게 되면 이 데이터들이 Memory Heap에 저장됨
+저장된 Data들은 구조적으로 정리된 자료구조가 아니여서 아무곳에나 저장이 되어있음.
+
+- Call Stack : 함수를 실행하는 순서에 따라서 실행된 함수들을 차곡 차곡 쌓아놓는 함수
+( *Stack : LIFO > Last In First Out
+stack APIs : push(넣는거), pop(빼는거)) 
+-----------------------------------------------------------------
+Queue (큐) 자료구조 개념
+: FIFO (First In First Out)
+ex) add, remove
+
